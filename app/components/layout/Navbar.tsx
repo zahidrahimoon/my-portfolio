@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "../ui/Container";
 import { Logo } from "../ui/Logo";
 import { Button } from "../ui/Button";
@@ -23,13 +23,27 @@ function Caret() {
 /** Thin accent strip + sticky cream navigation with mobile menu. */
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50">
       {/* dark accent strip */}
       <div className="h-1.5 w-full bg-topbar" />
 
-      <div className="border-b border-line/70 bg-cream-soft/90 backdrop-blur-md">
+      <div
+        className={`border-b transition-all duration-300 ${
+          scrolled
+            ? "border-line/70 bg-cream-soft/90 backdrop-blur-md"
+            : "border-transparent bg-cream"
+        }`}
+      >
         <Container className="flex h-16 items-center justify-between">
           <Logo />
 
