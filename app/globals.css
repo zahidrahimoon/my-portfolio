@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ */
+/*  GLOBAL THEME                                                        */
+/*  Warm editorial palette matching the Covent design: cream surfaces, */
+/*  espresso ink, a single gold accent. Playfair Display for headings, */
+/*  Inter for body. Every component reads these tokens.                */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  /* Surfaces */
+  --color-cream: #f1ede4; /* primary page background */
+  --color-cream-soft: #f4f1ea; /* header / lighter band */
+  --color-cream-deep: #e6ded1; /* "what we run" band */
+  --color-tan: #dcd5c8; /* network band */
+  --color-surface: #ffffff; /* white sections / cards */
+
+  /* Ink / text */
+  --color-ink: #221c17; /* headings */
+  --color-ink-soft: #4a4136; /* strong body */
+  --color-muted: #7c7264; /* muted body / eyebrows */
+  --color-faint: #b9b1a2; /* faded numbers / disabled */
+
+  /* Brand / accent */
+  --color-espresso: #2b2520; /* buttons, footer */
+  --color-espresso-soft: #3a332c;
+  --color-gold: #a9822c; /* highlight border, stars, crown */
+  --color-gold-soft: #cdb583;
+
+  /* Lines */
+  --color-line: #ddd5c6;
+  --color-line-soft: #e7e0d4;
+
+  /* Topbar */
+  --color-topbar: #2c352f;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Radii */
+  --radius-card: 0.9rem;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(34, 28, 23, 0.04),
+    0 14px 34px -18px rgba(34, 28, 23, 0.18);
+  --shadow-lift: 0 30px 70px -28px rgba(34, 28, 23, 0.32);
+
+  /* Section rhythm */
+  --spacing-section: 7rem;
+
+  /* Motion */
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-slow: marquee 65s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings — Playfair, tight leading, slightly tightened tracking. */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+}
+
+/* Eyebrow / kicker label above section headings. */
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Edge fade for marquee rows. */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow {
+    animation: none !important;
+  }
 }
