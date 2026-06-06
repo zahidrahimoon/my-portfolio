@@ -1,281 +1,328 @@
 /* ------------------------------------------------------------------ */
-/*  CONTENT MODEL                                                       */
-/*  All page copy lives here so sections stay presentational and the    */
-/*  site can be re-skinned or localized without touching layout code.   */
+/*  CONTENT MODEL — Zahid Rahimoon · Portfolio                          */
+/*  All copy lives here so sections stay presentational. Export names   */
+/*  are kept stable so each section keeps consuming the same key.       */
 /* ------------------------------------------------------------------ */
 
 export const site = {
-  name: "Covent",
-  email: "hello@joincovent.com",
+  name: "Zahid Rahimoon",
+  email: "mtkinverse@gmail.com",
 };
 
 export const nav = {
   primary: [
-    { label: "For GTM Teams", href: "#gtm" },
-    { label: "For Organizers", href: "#network" },
-    { label: "Event Formats", href: "#formats", caret: true },
-    { label: "Resources", href: "#faq", caret: true },
+    { label: "Experience", href: "#how", caret: false },
+    { label: "Projects", href: "#formats", caret: false },
+    { label: "Skills", href: "#network", caret: false },
+    { label: "FAQ", href: "#faq", caret: false },
   ],
   actions: [
-    { label: "Login", href: "#login", variant: "outline" as const },
-    { label: "Contact Us", href: "#contact", variant: "primary" as const },
+    { label: "Résumé", href: "#", variant: "outline" as const },
+    { label: "Contact Me", href: "#contact", variant: "primary" as const },
   ],
 };
 
 export const hero = {
-  eyebrow: "The Fully Managed Events Platform",
-  title: "We produce events with the audiences you want to reach.",
-  body: "Tell us your target audience. We'll produce fully customized events, invite them, and handle all execution and logistics so you just show up.",
-  primaryCta: { label: "Contact Us", href: "#contact" },
-  secondaryCta: { label: "See how it works", href: "#how" },
-  rating: "5/5 from",
-  ratingSub: "Hundreds of GTM teams",
+  eyebrow: "Associate Software Engineer",
+  title: "I build scalable web & mobile products that actually perform.",
+  body: "Full-Stack Engineer with 2+ years shipping production-ready systems across React, Next.js, Node.js and React Native. I optimize performance, write clean architecture, and turn ideas into reliable software.",
+  primaryCta: { label: "Contact Me", href: "#contact" },
+  secondaryCta: { label: "View my work", href: "#formats" },
+  status: "Available for freelance & full-time",
+  stats: [
+    { value: "2+", label: "years experience" },
+    { value: "25+", label: "projects shipped" },
+    { value: "10+", label: "happy clients" },
+  ],
 };
 
+/* Tech-stack marquee (was the client-logo wall). */
 export const clientLogos = [
-  "monday.com",
-  "Alma",
-  "syndio",
-  "knowbe4",
-  "FILEVINE",
-  "Meltwater",
-  "Lightfield",
-  "SEEDLEGALS",
-  "jenni",
-  "telesign",
-  "ATLASSIAN",
-  "Apollo.io",
-  "navan",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "NestJS",
+  "React Native",
+  "PostgreSQL",
+  "MongoDB",
+  "Tailwind CSS",
+  "Prisma",
+  "Express.js",
+  "Socket.IO",
 ];
 
+/* "What I Do" (was Why It Works). */
 export const whyItWorks = {
-  eyebrow: "Why It Works",
-  title: "The One B2B Growth Channel AI Can Never Replace",
-  body: "AI flooded every digital channel. The only channel it can't replace is a conversation in real life.",
+  eyebrow: "What I Do",
+  title: "One engineer across the entire stack.",
+  body: "From pixel-perfect interfaces to resilient backends and cross-platform mobile — I own the full product lifecycle.",
   channels: [
     {
-      name: "Email",
-      span: "1971 — 2024",
-      note: "AI writes 10,000 a day. Yours goes straight to spam.",
+      name: "Frontend",
+      icon: "layout",
+      note: "React, Next.js & TypeScript. Accessible, pixel-perfect UIs built straight from Figma.",
     },
     {
-      name: "Digital Ads",
-      span: "1994 — 2024",
-      note: "AI-generated clicks. AI-generated fraud. No humans involved.",
+      name: "Backend",
+      icon: "server",
+      note: "Node.js, NestJS & Express. REST APIs, auth, and real-time with Socket.IO.",
     },
     {
-      name: "Cold Calling",
-      span: "1876 — 2024",
-      note: "AI autodialers killed the cold call. SDRs never stood a chance.",
+      name: "Mobile",
+      icon: "phone",
+      note: "React Native & Expo. Cross-platform apps with up to 95% shared code.",
     },
     {
-      name: "LinkedIn",
-      span: "2003 — 2024",
-      note: "Your prospect's AI is ignoring your AI.",
+      name: "DevOps",
+      icon: "cloud",
+      note: "Docker, CI/CD & Vercel. Reliable, automated and repeatable deployments.",
     },
   ],
-  highlight: { name: "In-Person Events" },
+  highlight: { name: "Full-Stack Engineering" },
 };
 
+/* "Why Work With Me" — measurable impact (was The Problem). */
 export const problems = {
-  eyebrow: "The Problem",
-  title: "Why most events never generate results",
+  eyebrow: "Why Work With Me",
+  title: "Measurable impact, not just code.",
   items: [
     {
-      tone: "rose",
-      icon: "user-x",
-      title: "Wrong people in the room",
-      body: "You spend thousands and half the room is your own team. Audience quality is the only thing separating growth from an expensive happy hour.",
-    },
-    {
       tone: "amber",
-      icon: "clock",
-      title: "Events eat the time you don't have",
-      body: "Venues, catering, invites, RSVPs, follow-up — weeks of coordination on top of your actual job.",
+      icon: "zap",
+      title: "40% faster apps",
+      body: "Boosted performance through Next.js SSR/ISR strategies and optimized backend design under high traffic.",
     },
     {
       tone: "sage",
-      icon: "chart",
-      title: "No way to measure what worked",
-      body: "You can't attribute a closed deal back to a dinner three months ago. So the budget never gets approved again.",
+      icon: "clock",
+      title: "30% quicker delivery",
+      body: "Component-driven architecture with React and Tailwind cut development time across 15+ applications.",
+    },
+    {
+      tone: "rose",
+      icon: "shield",
+      title: "25% fewer bugs",
+      body: "TypeScript migrations and clean, tested patterns improved code quality and long-term reliability.",
     },
   ],
   testimonial: {
     quote:
-      "Events used to eat up more time than they were worth — and even then, we weren't sure we were in the right rooms. There was no clear way to connect the events we did to actual sales outcomes.",
-    name: "Tyler",
-    role: "Head of Growth @ Presscart",
+      "I care about the details users actually feel — speed, reliability, and interfaces that just work. The best engineering is invisible.",
+    name: "Zahid Rahimoon",
+    role: "Full-Stack Engineer",
   },
 };
 
+/* Experience timeline (was How It Works steps). */
 export const steps = {
-  eyebrow: "How It Works",
-  title: "We handle everything. You just show up.",
+  eyebrow: "Experience",
+  title: "Where I've made an impact.",
   items: [
     {
       no: "01",
-      title: "Share your goals",
-      body: "Tell us your ICP, target cities, preferred format, and budget.",
+      title: "Associate Software Engineer",
+      company: "360XpertSolutions",
+      period: "Feb 2026 – Present",
+      body: "Leading full-stack delivery with scalable architecture and high-traffic APIs.",
+      achievements: [
+        "Architected modular full-stack apps with scalable deployment pipelines",
+        "Enhanced performance by 40% via Next.js SSR/ISR strategies",
+        "Designed RESTful APIs with NestJS, PostgreSQL & Prisma ORM",
+      ],
+      tech: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "TypeScript"],
     },
     {
       no: "02",
-      title: "We build it",
-      body: "We source the venue, handle logistics, and recruit ICP-matched attendees via qualification RSVP.",
+      title: "Full Stack Developer",
+      company: "360XpertSolutions",
+      period: "Jul 2025 – Feb 2026",
+      body: "Shipped web and cross-platform mobile products from design to production.",
+      achievements: [
+        "Built 15+ responsive apps with pixel-perfect UI from Figma",
+        "Delivered cross-platform mobile apps with 95% code reuse",
+        "Cut development time 30% with component-driven architecture",
+      ],
+      tech: ["React", "React Native", "Expo", "Tailwind CSS", "Node.js"],
     },
     {
       no: "03",
-      title: "You approve the room",
-      body: "See the full guest list before the event. Approve or decline any attendee.",
+      title: "Frontend Developer",
+      company: "Techverse51",
+      period: "Jan 2025 – Sep 2025",
+      body: "Focused on reusable component systems and code-quality improvements.",
+      achievements: [
+        "Built dynamic, reusable UI component libraries",
+        "Migrated codebase to TypeScript, reducing bugs by 25%",
+        "Applied React best practices and proven design patterns",
+      ],
+      tech: ["React", "Next.js", "TypeScript", "CSS3"],
     },
     {
       no: "04",
-      title: "You just show up",
-      body: "Walk into a full room and get a complete recap with attribution and next-step leads.",
+      title: "Full Stack Developer — Freelance",
+      company: "Self-Employed",
+      period: "Sep 2024 – Present",
+      body: "Owned end-to-end delivery for clients across e-commerce and custom apps.",
+      achievements: [
+        "Delivered 10+ full-stack projects including e-commerce platforms",
+        "Owned the lifecycle from requirements to deployment & maintenance",
+        "Maintained reliable production systems for ongoing clients",
+      ],
+      tech: ["MERN", "Next.js", "MongoDB", "Express.js"],
     },
   ],
 };
 
 export const gallery = {
-  eyebrow: "Inside a Covent Event",
-  title: "Inside a Covent Event",
-  body: "Hundreds of curated experiences your audience loves.",
+  eyebrow: "Selected Work",
+  title: "A glimpse of what I build.",
+  body: "Dashboards, platforms, developer tools and mobile apps — shipped to production.",
 };
 
+/* Projects (was What We Run formats). */
 export const formats = {
-  eyebrow: "What We Run",
-  title: "Every format. Any city. Fully managed.",
+  eyebrow: "Projects",
+  title: "Things I've designed, built and shipped.",
   items: [
     {
-      name: "Executive Dinners",
-      desc: "10–25 attendees · Enterprise growth acceleration",
-      icon: "dining",
+      name: "Rahimoon Institute",
+      desc: "Full college platform — student portal, CMS & admin dashboard with file uploads, email and role-based access.",
+      tech: "MERN · Prisma · Cloudinary · JWT",
+      icon: "book",
       tone: "tan",
       popular: true,
     },
     {
-      name: "Cocktail Mixers",
-      desc: "50–150 attendees · Brand awareness and relationship-building",
-      icon: "wine",
-      tone: "rose",
-      popular: false,
-    },
-    {
-      name: "Breakfasts",
-      desc: "20–50 attendees · Perfect for roadshows and market entry",
-      icon: "coffee",
-      tone: "tan",
-      popular: false,
-    },
-    {
-      name: "Hackathons",
-      desc: "50–100 developers · Developer engagement and product feedback",
-      icon: "code",
+      name: "Next Boilerplate",
+      desc: "Production-ready Next.js starter kit used in 10+ projects, cutting setup time by 60%.",
+      tech: "Next.js 16 · Socket.IO · ShadCN · i18n",
+      icon: "rocket",
       tone: "purple",
       popular: false,
     },
     {
-      name: "Conference Side Events",
-      desc: "15–40 attendees · Capture the conference audience",
-      icon: "ticket",
+      name: "360 Mock Server",
+      desc: "Zero-config mock REST API server published on NPM with CRUD, faker data and pagination.",
+      tech: "Node.js · Express · Faker.js",
+      icon: "server",
       tone: "blue",
       popular: false,
     },
     {
-      name: "Fully Custom Events",
-      desc: "Any size · Golf outings, yacht parties, ski trips — whatever fits your audience",
-      icon: "sparkle",
+      name: "Oneviti Dashboard",
+      desc: "Personal productivity hub — tasks, notes, finance tracking and scheduling in one place.",
+      tech: "React · Node.js · MongoDB",
+      icon: "dashboard",
+      tone: "rose",
+      popular: false,
+    },
+    {
+      name: "E-Commerce Platforms",
+      desc: "10+ custom storefronts with carts, payments and admin panels delivered for clients.",
+      tech: "MERN · Next.js · Stripe",
+      icon: "cart",
+      tone: "tan",
+      popular: false,
+    },
+    {
+      name: "Cross-Platform Mobile Apps",
+      desc: "React Native & Expo apps sharing a single codebase across iOS and Android.",
+      tech: "React Native · Expo",
+      icon: "phone",
       tone: "gray",
       popular: false,
     },
   ],
 };
 
+/* Achievements & certifications (was Testimonials). */
 export const testimonials = {
-  eyebrow: "Built for GTM Teams",
-  title: "We'll Sweat the Details. You Just Show Up.",
-  body: "Covent runs your private events from start to finish so your team can stop worrying about logistics and start having the conversations that turn into business outcomes.",
+  eyebrow: "Achievements",
+  title: "Recognition, research & published work.",
+  body: "Beyond client projects — tools I've open-sourced, research I've published, and credentials I've earned.",
   items: [
     {
-      company: "Syndio",
+      company: "360 Mock Server",
       quote:
-        "We engaged 100+ Fortune 500 HR leaders through a series of intimate events, achieving a 95% qualified lead rate. Covent helped us turn thought leadership into real pipeline.",
+        "Published an NPM package — an API simulation tool for rapid prototyping, used across 10+ projects to unblock frontend work.",
       name: "",
-      role: "CMO",
-      cta: "Read story",
+      role: "Open Source · NPM",
+      cta: "View on NPM",
     },
     {
-      company: "Telesign",
+      company: "IPv4 Optimization",
       quote:
-        "Across 14 private executive events in major U.S. markets, Covent delivered a 92%+ qualified lead rate by getting us in front of CISOs and VP Engineering leaders at top enterprise companies.",
+        "Research on network address optimization using VLSM & CIDR, achieving a 30% address-efficiency improvement.",
       name: "",
-      role: "Field Marketing Director",
-      cta: "Read story",
-    },
-    {
-      company: "TriNet",
-      quote:
-        "With Covent, we've been able to access event communities we didn't even know existed and consistently get in front of the right people.",
-      name: "Christina L. Sclafani",
-      role: "Sr. Sales Consultant",
+      role: "Research",
       cta: "",
     },
     {
-      company: "Unicorner",
+      company: "OOP with Java",
       quote:
-        "We're getting access to 10x more sponsors in a fraction of the time. Covent has completely changed how we approach partnerships.",
-      name: "Arek Der-Sarkissian",
-      role: "Founder",
+        "Certified in object-oriented programming fundamentals, SOLID principles and design patterns.",
+      name: "",
+      role: "Certification",
       cta: "",
     },
     {
-      company: "Apollo.io",
+      company: "Computer Networking",
       quote:
-        "The audience quality was unreal. Every person in the room was someone we'd actively wanted to meet for months.",
-      name: "Sarah L.",
-      role: "VP Marketing",
+        "Certification covering protocols, addressing, subnetting and core network architecture.",
+      name: "",
+      role: "Certification",
       cta: "",
     },
     {
-      company: "Meltwater",
+      company: "Frontend Simulations",
       quote:
-        "We sourced more qualified pipeline from one Covent dinner than a full quarter of paid social.",
-      name: "Daniel R.",
-      role: "Director of Demand Gen",
+        "Completed industry frontend development job simulations and real-world engineering assessments.",
+      name: "",
+      role: "Certification",
+      cta: "",
+    },
+    {
+      company: "Diploma in Web Dev",
+      quote:
+        "Aptech Computer Education — a full-stack web development diploma covering the modern JavaScript ecosystem.",
+      name: "",
+      role: "Education",
       cta: "",
     },
   ],
 };
 
+/* Tech stack tiles (was The Network). */
 export const network = {
-  eyebrow: "The Network",
-  title:
-    "Covent's global network getting you access to every type of audience you want to reach.",
-  body: "500+ vetted organizers. 25+ industries. 30+ markets. 5M+ contacts. We source the right room, fill it with your ICP, and handle everything else.",
+  eyebrow: "Tech Stack",
+  title: "The tools I reach for every day.",
+  body: "Full coverage from frontend to deployment — frameworks, databases, infra and the glue in between.",
   communities: [
-    "BLANCO",
-    "Alumni & Community",
-    "Founders Mesh",
-    "TechWalk",
-    "Startup CPG",
-    "Allocator One",
-    "Shanti House",
-    "Founder Social Club",
-    "Founders Forum",
-    "The Cut Pitch",
-    "Step",
-    "Chew On This",
-    "Tavern",
-    "KINN",
-    "Illinois Cyber",
-    "ENTRE",
-    "Weeknd",
-    "Black Women Talk Tech",
-    "The AI Collective",
-    "Pico",
-    "Parlor Social Club",
-    "GenZTea",
-    "B2B Growth Expo",
-    "Pitch Roast Live",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "NestJS",
+    "Express",
+    "React Native",
+    "Expo",
+    "Tailwind CSS",
+    "ShadCN/UI",
+    "Redux Toolkit",
+    "Zustand",
+    "Zod",
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "Redis",
+    "Prisma",
+    "Docker",
+    "Socket.IO",
+    "RabbitMQ",
+    "Git",
+    "Vercel",
+    "Cloudinary",
   ],
 };
 
@@ -283,83 +330,83 @@ export const faqs = {
   title: "Frequently asked questions",
   items: [
     {
-      q: "What is Covent?",
-      a: "Covent is a fully managed B2B event marketing platform that helps go-to-market (GTM) teams meet their target customers through curated in-person events. Founded in 2024, Covent partners with a vetted network of 500+ event organizers across 30+ markets in North America, Europe, the Middle East, and Asia-Pacific. We produce executive dinners, cocktail mixers, breakfasts, hackathons, conference side events, and fully custom experiences end-to-end — handling audience sourcing, ICP qualification, organizer matching, registration, logistics, and on-the-ground coordination. Every event includes a make-good guarantee, and events are white-labeled by default under the client's brand.",
+      q: "Are you available for freelance or full-time work?",
+      a: "Yes — I'm open to both freelance projects and full-time roles. The quickest way to reach me is email, and I usually reply within a day.",
     },
     {
-      q: "What exactly does Covent handle, and what do I need to do?",
-      a: "We handle everything: venue sourcing, vendors, catering, branding, guest recruitment, invites and reminders, on-site run-of-show, and the post-event report with attribution. On your side, all we need is a short brief — your ICP, target cities, preferred format and budget — and your approval on the final guest list.",
+      q: "What's your core tech stack?",
+      a: "Day to day I work across the MERN stack and Next.js: React, Next.js, TypeScript and Tailwind on the frontend; Node.js, NestJS and Express on the backend; and MongoDB or PostgreSQL with Prisma for data. For mobile I use React Native and Expo.",
     },
     {
-      q: "How do you find and qualify the right attendees for our event?",
-      a: "We recruit from a vetted network of 500+ organizers and 5M+ contacts, then score every prospective guest against your ICP. You approve or decline the final list before any invite goes out, so you know exactly who will be in the room.",
+      q: "Do you build mobile apps too?",
+      a: "Yes. I build cross-platform mobile apps with React Native and Expo, typically sharing 90%+ of the code across iOS and Android.",
     },
     {
-      q: "How far in advance do I need to reach out?",
-      a: "Three to five weeks is the sweet spot for most formats, but we regularly turn around side events and dinners on a shorter runway.",
+      q: "How much experience do you have?",
+      a: "2+ years of professional experience across associate software engineering, full-stack and frontend roles, plus freelance work delivering 10+ production projects.",
     },
     {
-      q: "Do you work with virtual or online events?",
-      a: "Our focus and our edge is in-person. That's the channel AI can't replace and the one that produces the pipeline our clients come to us for.",
+      q: "What's your educational background?",
+      a: "I'm pursuing a B.S. in Computer Science at Dawood University of Engineering and Technology, Karachi (2023–2027), alongside a Diploma in Web Development from Aptech Computer Education.",
     },
     {
-      q: "How do we measure ROI — and what does success look like?",
-      a: "Every event closes with a report: who attended, ICP match rate, qualified leads and projected pipeline — mapped straight back to your revenue motion.",
+      q: "Can you own a project end to end?",
+      a: "Absolutely — from requirements and architecture through development, deployment and maintenance. I handle UI, APIs, databases, auth, real-time features and DevOps.",
     },
     {
-      q: "Can we co-host with a partner or split costs with a co-sponsor?",
-      a: "Absolutely. Co-hosted and partner-led formats are some of our highest-performing events, and pricing starts lower for co-hosted events. We handle the coordination across both sides.",
-    },
-    {
-      q: "Do you operate outside the US?",
-      a: "Yes. Our organizer network spans 30+ markets across North America, EMEA and APAC.",
+      q: "Where are you based?",
+      a: "I'm based in Karachi, Pakistan, and work with clients and teams remotely across time zones.",
     },
   ],
 };
 
 export const finalCta = {
-  title: "Ready to stop planning and start showing up?",
-  body: "Tell us who you want in the room. We'll build the event.",
-  primaryCta: { label: "Contact Us", href: "#contact" },
-  secondaryCta: { label: "Login", href: "#login" },
+  title: "Have a project in mind? Let's build it.",
+  body: "Whether it's a web app, a mobile product or an API — I'd love to hear about it.",
+  primaryCta: { label: "Contact Me", href: "#contact" },
+  secondaryCta: { label: "View Projects", href: "#formats" },
 };
 
 export const footer = {
   description:
-    "Covent helps B2B GTM teams meet their target customers through curated events — partnering with top organizers to deliver high-impact experiences.",
+    "Full-Stack Engineer building scalable web and mobile products with React, Next.js, Node.js and React Native.",
   socials: [
+    { label: "GitHub", href: "#", icon: "github" },
     { label: "LinkedIn", href: "#", icon: "linkedin" },
-    { label: "Instagram", href: "#", icon: "instagram" },
     { label: "X", href: "#", icon: "x" },
   ],
   columns: [
     {
-      title: "For GTM Teams",
+      title: "Navigate",
       links: [
-        { label: "Overview", href: "#gtm" },
-        { label: "Case Studies", href: "#gtm" },
-        { label: "Event Formats", href: "#formats" },
+        { label: "Experience", href: "#how" },
+        { label: "Projects", href: "#formats" },
+        { label: "Tech Stack", href: "#network" },
       ],
     },
     {
-      title: "For Organizers",
-      links: [{ label: "Join the Network", href: "#network" }],
-    },
-    {
-      title: "Resources",
+      title: "Projects",
       links: [
-        { label: "Blog", href: "#faq" },
-        { label: "Careers", href: "#faq" },
+        { label: "Rahimoon Institute", href: "#formats" },
+        { label: "Next Boilerplate", href: "#formats" },
+        { label: "360 Mock Server", href: "#formats" },
       ],
     },
     {
-      title: "Legal",
+      title: "Connect",
       links: [
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms of Service", href: "#" },
-        { label: "Cookie Policy", href: "#" },
+        { label: "GitHub", href: "#" },
+        { label: "LinkedIn", href: "#" },
+        { label: "Email", href: "#contact" },
+      ],
+    },
+    {
+      title: "More",
+      links: [
+        { label: "Résumé", href: "#" },
+        { label: "FAQ", href: "#faq" },
       ],
     },
   ],
-  copyright: "© 2026 Covent (formerly CoVent). All rights reserved.",
+  copyright: "© 2026 Zahid Rahimoon. Built with Next.js & Tailwind CSS.",
 };

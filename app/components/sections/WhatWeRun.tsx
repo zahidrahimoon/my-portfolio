@@ -10,11 +10,11 @@ const toneStyles: Record<string, string> = {
   gray: "bg-stone-200 text-stone-500",
 };
 
-function FormatIcon({ name }: { name: string }) {
+function ProjectIcon({ name }: { name: string }) {
   const paths: Record<string, React.ReactNode> = {
-    dining: (
+    book: (
       <path
-        d="M6 3v7m0 0v11M6 10c1.7 0 3-1.3 3-3V3M18 3c-2 0-3 2-3 5s1 3 3 3v10"
+        d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5zM18 17H6"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
@@ -22,9 +22,9 @@ function FormatIcon({ name }: { name: string }) {
         fill="none"
       />
     ),
-    wine: (
+    rocket: (
       <path
-        d="M7 3h10l-1 6a4 4 0 0 1-8 0L7 3zM12 13v6m-3 0h6"
+        d="M5 15c-1 1-1 4-1 4s3 0 4-1m1-3a8 8 0 0 1 6-9c2 0 3 1 3 3a8 8 0 0 1-9 6l-3-3zM14 9h.01"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
@@ -32,9 +32,9 @@ function FormatIcon({ name }: { name: string }) {
         fill="none"
       />
     ),
-    coffee: (
+    server: (
       <path
-        d="M4 9h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM17 10h2a2 2 0 0 1 0 4h-2M7 3v2M11 3v2"
+        d="M4 5h16v5H4zM4 14h16v5H4zM7 7.5h.01M7 16.5h.01"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
@@ -42,9 +42,18 @@ function FormatIcon({ name }: { name: string }) {
         fill="none"
       />
     ),
-    code: (
+    dashboard: (
       <path
-        d="m9 9-3 3 3 3m6-6 3 3-3 3"
+        d="M4 5h7v6H4zM13 5h7v4h-7zM13 12h7v7h-7zM4 14h7v5H4z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    ),
+    cart: (
+      <path
+        d="M4 5h2l1.5 10.5a1 1 0 0 0 1 .9h7.8a1 1 0 0 0 1-.8L20 8H6.5M9 20h.01M17 20h.01"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
@@ -52,21 +61,12 @@ function FormatIcon({ name }: { name: string }) {
         fill="none"
       />
     ),
-    ticket: (
+    phone: (
       <path
-        d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H6a2 2 0 0 1-2-2 2 2 0 0 0 0-4zM10 6v12"
+        d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM11 18h2"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    ),
-    sparkle: (
-      <path
-        d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"
-        stroke="currentColor"
-        strokeWidth="1.6"
         strokeLinejoin="round"
         fill="none"
       />
@@ -79,7 +79,7 @@ function FormatIcon({ name }: { name: string }) {
   );
 }
 
-/** Grid of event-format cards with a highlighted "Most popular" option. */
+/** Project cards with a highlighted "Featured" project. */
 export function WhatWeRun() {
   return (
     <section className="bg-cream-deep py-section">
@@ -95,7 +95,7 @@ export function WhatWeRun() {
           {formats.items.map((item) => (
             <div
               key={item.name}
-              className={`relative rounded-card bg-white p-7 ${
+              className={`relative flex flex-col rounded-card bg-white p-7 ${
                 item.popular
                   ? "border-2 border-espresso shadow-soft"
                   : "border border-line-soft"
@@ -103,20 +103,23 @@ export function WhatWeRun() {
             >
               {item.popular ? (
                 <div className="absolute -top-3 left-6">
-                  <Badge tone="dark">Most Popular</Badge>
+                  <Badge tone="dark">Featured</Badge>
                 </div>
               ) : null}
 
               <span
                 className={`grid h-11 w-11 place-items-center rounded-xl ${toneStyles[item.tone]}`}
               >
-                <FormatIcon name={item.icon} />
+                <ProjectIcon name={item.icon} />
               </span>
               <h3 className="mt-6 font-display text-xl font-bold text-ink">
                 {item.name}
               </h3>
-              <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">
+              <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">
                 {item.desc}
+              </p>
+              <p className="mt-5 font-mono text-xs text-ink-soft/70">
+                {item.tech}
               </p>
             </div>
           ))}

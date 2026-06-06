@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Covent — The Fully Managed Events Platform",
+  title: "Zahid Rahimoon — Full-Stack Engineer",
   description:
-    "Tell us your target audience. We'll produce fully customized events, invite them, and handle all execution and logistics so you just show up.",
+    "Full-Stack Engineer with 2+ years building scalable web and mobile products with React, Next.js, Node.js and React Native.",
 };
 
 export default function RootLayout({

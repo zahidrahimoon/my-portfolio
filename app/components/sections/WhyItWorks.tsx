@@ -2,39 +2,59 @@ import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { whyItWorks } from "../data/content";
 
-function Tombstone() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6 text-faint" fill="none">
+function ServiceIcon({ name }: { name: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    layout: (
       <path
-        d="M6 21V10a6 6 0 0 1 12 0v11"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-      <path
-        d="M12 7v6M9 10h6"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function Crown() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7 text-gold" fill="none">
-      <path
-        d="M4 8l3.5 3L12 5l4.5 6L20 8l-1.5 9h-13L4 8z"
+        d="M4 5h16v14H4zM4 9h16M9 9v10"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinejoin="round"
       />
-      <path d="M5.5 20h13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    ),
+    server: (
+      <path
+        d="M4 5h16v5H4zM4 14h16v5H4zM7 7.5h.01M7 16.5h.01"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    phone: (
+      <path
+        d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM11 18h2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    cloud: (
+      <path
+        d="M7 18a4 4 0 0 1-.5-7.97 5 5 0 0 1 9.6.97A3.5 3.5 0 0 1 17 18H7z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    ),
+  };
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6 text-ink-soft" fill="none">
+      {paths[name]}
     </svg>
   );
 }
 
-/** "AI can never replace" — connected row of dying channels + highlight. */
+function Star() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-7 w-7 text-gold" fill="currentColor">
+      <path d="M12 2l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 18.2 6.1 20.3l1.2-6.6L2.5 9l6.6-.9L12 2z" />
+    </svg>
+  );
+}
+
+/** "What I Do" — four disciplines connected to a full-stack highlight. */
 export function WhyItWorks() {
   return (
     <section className="bg-cream py-section">
@@ -46,7 +66,6 @@ export function WhyItWorks() {
         />
 
         <div className="relative mt-16">
-          {/* connector line behind the cards */}
           <div
             aria-hidden
             className="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-line lg:block"
@@ -58,18 +77,17 @@ export function WhyItWorks() {
                 key={ch.name}
                 className="flex flex-col items-center rounded-2xl border border-line bg-cream/40 px-5 py-7 text-center"
               >
-                <Tombstone />
-                <h3 className="mt-4 font-semibold text-ink-soft">{ch.name}</h3>
-                <span className="mt-1 text-xs text-muted">{ch.span}</span>
-                <p className="mt-3 text-xs italic leading-relaxed text-muted">
+                <ServiceIcon name={ch.icon} />
+                <h3 className="mt-4 font-semibold text-ink">{ch.name}</h3>
+                <p className="mt-3 text-xs leading-relaxed text-muted">
                   {ch.note}
                 </p>
               </div>
             ))}
 
-            {/* highlighted alternative */}
+            {/* highlighted discipline */}
             <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-gold bg-white px-5 py-7 text-center shadow-soft">
-              <Crown />
+              <Star />
               <div className="mt-4 h-px w-10 bg-gold/40" />
               <h3 className="mt-4 font-display text-lg font-bold leading-tight text-ink">
                 {whyItWorks.highlight.name}

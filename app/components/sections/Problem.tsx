@@ -10,16 +10,22 @@ const toneStyles: Record<string, string> = {
 
 function Icon({ name }: { name: string }) {
   const paths: Record<string, React.ReactNode> = {
-    "user-x": (
-      <>
-        <circle cx="9" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.7" />
-        <path
-          d="M3.5 20a5.5 5.5 0 0 1 11 0M16 8l4 4m0-4-4 4"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </>
+    zap: (
+      <path
+        d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    ),
+    shield: (
+      <path
+        d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3zM9 12l2 2 4-4"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     ),
     clock: (
       <>

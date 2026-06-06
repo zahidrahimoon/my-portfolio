@@ -25,7 +25,7 @@ function PhotoMarquee({
           <img
             key={`${seed}-${i}`}
             src={`https://picsum.photos/seed/${seed}/520/360`}
-            alt="Covent event"
+            alt="Project preview"
             loading="lazy"
             className="h-44 w-72 shrink-0 rounded-lg object-cover sm:h-52 sm:w-80"
           />
