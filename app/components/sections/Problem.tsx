@@ -1,5 +1,6 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
+import { Icon } from "../svg/Icon";
 import { problems } from "../data/content";
 
 const toneStyles: Record<string, string> = {
@@ -7,55 +8,6 @@ const toneStyles: Record<string, string> = {
   amber: "bg-amber-100 text-amber-600",
   sage: "bg-emerald-100 text-emerald-600",
 };
-
-function Icon({ name }: { name: string }) {
-  const paths: Record<string, React.ReactNode> = {
-    zap: (
-      <path
-        d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-    ),
-    shield: (
-      <path
-        d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3zM9 12l2 2 4-4"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
-    clock: (
-      <>
-        <circle cx="12" cy="12" r="8.2" stroke="currentColor" strokeWidth="1.7" />
-        <path
-          d="M12 7.5V12l3 2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </>
-    ),
-    chart: (
-      <>
-        <path
-          d="M5 20V10M12 20V5M19 20v-7"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </>
-    ),
-  };
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
-      {paths[name]}
-    </svg>
-  );
-}
 
 /** Three problem cards plus a supporting pull-quote. */
 export function Problem() {
@@ -68,11 +20,11 @@ export function Problem() {
           align="left"
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="reveal mt-12 grid gap-5 md:grid-cols-3">
           {problems.items.map((item) => (
             <div
               key={item.title}
-              className="rounded-card border border-line-soft bg-cream-soft/40 p-7"
+              className="group rounded-card border border-line-soft bg-cream-soft/40 p-7"
             >
               <span
                 className={`grid h-11 w-11 place-items-center rounded-xl ${toneStyles[item.tone]}`}

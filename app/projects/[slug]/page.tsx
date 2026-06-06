@@ -82,7 +82,7 @@ export default async function ProjectDetailPage({
                     href={project.links.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex h-11 items-center gap-2 rounded-lg bg-espresso px-5 text-[0.95rem] font-medium text-white transition-colors hover:bg-espresso-soft"
+                    className="lift inline-flex h-11 items-center gap-2 rounded-lg bg-espresso px-5 text-[0.95rem] font-medium text-white transition-colors hover:bg-espresso-soft"
                   >
                     Live demo
                   </a>
@@ -92,7 +92,7 @@ export default async function ProjectDetailPage({
                     href={project.links.code}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-white px-5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-cream-soft"
+                    className="lift inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-white px-5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-cream-soft"
                   >
                     Source code
                   </a>

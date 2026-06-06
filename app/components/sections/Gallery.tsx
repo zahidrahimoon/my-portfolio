@@ -1,6 +1,7 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
+import { Icon } from "../svg/Icon";
 import { gallery } from "../data/content";
 
 type Review = (typeof gallery.items)[number];
@@ -9,9 +10,7 @@ function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5 text-gold" aria-label={`${count} out of 5`}>
       {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-          <path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.9l1.1-6.5L2.6 9.8l6.5-.9L12 2.5z" />
-        </svg>
+        <Icon key={i} name="star" className="h-4 w-4" animate="none" />
       ))}
     </div>
   );

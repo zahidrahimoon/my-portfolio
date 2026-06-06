@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { LogoMarquee } from "./LogoMarquee";
@@ -9,7 +10,7 @@ export function Hero() {
     <section id="top" className="bg-cream">
       <Container className="pt-20 pb-14 text-center sm:pt-28">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
-          <span className="inline-flex items-center gap-2 rounded-pill border border-line bg-cream-soft px-4 py-1.5 text-sm font-medium text-ink-soft">
+          <span className="rise inline-flex items-center gap-2 rounded-pill border border-line bg-cream-soft px-4 py-1.5 text-sm font-medium text-ink-soft">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -17,17 +18,28 @@ export function Hero() {
             {hero.status}
           </span>
 
-          <span className="eyebrow mt-6">{hero.eyebrow}</span>
+          <span className="eyebrow rise mt-6" style={{ "--rise-delay": "80ms" } as CSSProperties}>
+            {hero.eyebrow}
+          </span>
 
-          <h1 className="display mt-5 text-4xl font-bold text-ink sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
+          <h1
+            className="display rise mt-5 text-4xl font-bold text-ink sm:text-5xl lg:whitespace-nowrap lg:text-6xl"
+            style={{ "--rise-delay": "160ms" } as CSSProperties}
+          >
             {hero.title}
           </h1>
 
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
+          <p
+            className="rise mt-8 max-w-2xl text-lg leading-relaxed text-muted"
+            style={{ "--rise-delay": "240ms" } as CSSProperties}
+          >
             {hero.body}
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div
+            className="rise mt-10 flex flex-col gap-3 sm:flex-row"
+            style={{ "--rise-delay": "320ms" } as CSSProperties}
+          >
             <Button href={hero.primaryCta.href} variant="primary" size="lg">
               {hero.primaryCta.label}
             </Button>
@@ -37,7 +49,10 @@ export function Hero() {
           </div>
 
           {/* quick stats */}
-          <div className="mt-12 flex items-center gap-8 sm:gap-12">
+          <div
+            className="rise mt-12 flex items-center gap-8 sm:gap-12"
+            style={{ "--rise-delay": "400ms" } as CSSProperties}
+          >
             {hero.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-display text-3xl font-bold text-ink">

@@ -11,11 +11,11 @@ export function Faq() {
   return (
     <section id="faq" className="bg-surface py-section">
       <Container className="max-w-3xl">
-        <h2 className="display text-center text-4xl font-bold text-ink sm:text-5xl">
+        <h2 className="reveal display text-center text-4xl font-bold text-ink sm:text-5xl">
           {faqs.title}
         </h2>
 
-        <div className="mt-14 divide-y divide-line border-y border-line">
+        <div className="reveal mt-14 divide-y divide-line border-y border-line">
           {faqs.items.map((item, i) => {
             const isOpen = open === i;
             return (

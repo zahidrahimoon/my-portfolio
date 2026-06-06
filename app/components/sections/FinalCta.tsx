@@ -6,7 +6,7 @@ import { finalCta } from "../data/content";
 export function FinalCta() {
   return (
     <section id="contact" className="bg-cream py-section">
-      <Container className="text-center">
+      <Container className="reveal text-center">
         <h2 className="display mx-auto max-w-3xl text-4xl font-bold text-ink sm:text-5xl">
           {finalCta.title}
         </h2>

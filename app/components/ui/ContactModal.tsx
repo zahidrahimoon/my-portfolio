@@ -2,43 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { contact } from "../data/content";
+import { Icon } from "../svg/Icon";
 
 /* Dispatch this anywhere to open the contact modal. */
 export const OPEN_CONTACT_EVENT = "open-contact-modal";
 
 export function openContactModal() {
   window.dispatchEvent(new Event(OPEN_CONTACT_EVENT));
-}
-
-function SocialIcon({ label }: { label: string }) {
-  const common = {
-    viewBox: "0 0 24 24",
-    className: "h-4 w-4",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.7,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  if (label === "GitHub")
-    return (
-      <svg {...common} fill="currentColor" stroke="none">
-        <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-      </svg>
-    );
-  if (label === "LinkedIn")
-    return (
-      <svg {...common} fill="currentColor" stroke="none">
-        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H17.6v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z" />
-      </svg>
-    );
-  // Email
-  return (
-    <svg {...common}>
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m4 7 8 6 8-6" />
-    </svg>
-  );
 }
 
 export function ContactModal() {
@@ -173,7 +143,7 @@ export function ContactModal() {
                 aria-label={s.label}
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
               >
-                <SocialIcon label={s.label} />
+                <Icon name={s.label.toLowerCase()} className="h-4 w-4" />
               </a>
             ))}
           </div>

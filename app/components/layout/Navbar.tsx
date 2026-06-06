@@ -47,19 +47,6 @@ export function Navbar() {
         <Container className="flex h-16 items-center justify-between">
           <Logo />
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {nav.primary.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex items-center gap-1 text-[0.95rem] font-medium text-ink-soft transition-colors hover:text-ink"
-              >
-                {item.label}
-                {item.caret ? <Caret /> : null}
-              </a>
-            ))}
-          </nav>
-
           <div className="hidden items-center gap-3 md:flex">
             {nav.actions.map((action) => (
               <Button

@@ -1,26 +1,7 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
+import { Icon } from "../svg/Icon";
 import { education } from "../data/content";
-
-function CapIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
-      <path
-        d="M12 4 2 9l10 5 10-5-10-5Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 11v5c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-5M21 9v5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 /** "Education" — the two qualifications from the CV. */
 export function Education() {
@@ -34,15 +15,15 @@ export function Education() {
           align="left"
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        <div className="reveal mt-12 grid gap-5 sm:grid-cols-2">
           {education.items.map((e) => (
             <article
               key={e.degree}
-              className="flex flex-col rounded-card border border-line-soft bg-white p-7 shadow-soft"
+              className="group flex flex-col rounded-card border border-line-soft bg-white p-7 shadow-soft"
             >
               <div className="flex items-start justify-between gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-espresso text-white">
-                  <CapIcon />
+                  <Icon name="cap" className="h-6 w-6" />
                 </span>
                 <span className="rounded-full border border-line bg-cream-soft px-3 py-1 font-mono text-xs text-ink-soft">
                   {e.period}

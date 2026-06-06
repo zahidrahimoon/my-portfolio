@@ -314,16 +314,6 @@ export const testimonials = {
       accent: "#1b6fb0",
     },
     {
-      company: "OOP with Java",
-      quote:
-        "Certified in object-oriented programming fundamentals, SOLID principles and design patterns.",
-      name: "",
-      role: "Certification",
-      cta: "",
-      icon: "certificate",
-      accent: "#a9822c",
-    },
-    {
       company: "Computer Networking",
       quote:
         "Certification covering protocols, addressing, subnetting and core network architecture.",
@@ -342,16 +332,6 @@ export const testimonials = {
       cta: "",
       icon: "code",
       accent: "#6d3bd4",
-    },
-    {
-      company: "Diploma in Web Dev",
-      quote:
-        "Aptech Computer Education — a full-stack web development diploma covering the modern JavaScript ecosystem.",
-      name: "",
-      role: "Education",
-      cta: "",
-      icon: "cap",
-      accent: "#c0397f",
     },
   ],
 };

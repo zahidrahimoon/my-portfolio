@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 type Variant = "primary" | "outline" | "ghost" | "light";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-espresso/30 focus-visible:ring-offset-2 focus-visible:ring-offset-cream";
+  "lift inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-espresso/30 focus-visible:ring-offset-2 focus-visible:ring-offset-cream";
 
 const sizes = {
   sm: "h-9 px-4 text-sm",

@@ -22,7 +22,7 @@ export function SectionHeading({
       : "items-start text-left";
 
   return (
-    <div className={`flex max-w-3xl flex-col ${alignment} ${className}`}>
+    <div className={`reveal flex max-w-4xl flex-col ${alignment} ${className}`}>
       {eyebrow ? <span className="eyebrow mb-5">{eyebrow}</span> : null}
       <h2
         className={`display text-4xl font-bold text-ink sm:text-5xl ${titleClassName}`}

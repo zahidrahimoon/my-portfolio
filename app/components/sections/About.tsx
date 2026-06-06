@@ -8,7 +8,7 @@ export function About() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Left — copy + CTA */}
-          <div>
+          <div className="reveal">
             <span className="eyebrow mb-5 block">{about.eyebrow}</span>
             <h2 className="display max-w-xl text-4xl font-bold text-ink sm:text-5xl">
               {about.title}
@@ -21,7 +21,7 @@ export function About() {
 
             <a
               href="#contact"
-              className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-espresso px-7 text-[0.95rem] font-medium text-white transition-colors hover:bg-espresso-soft"
+              className="lift mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-espresso px-7 text-[0.95rem] font-medium text-white transition-colors hover:bg-espresso-soft"
             >
               {about.cta.label}
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
@@ -37,7 +37,7 @@ export function About() {
           </div>
 
           {/* Right — stat cards */}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="reveal grid gap-4 sm:grid-cols-2">
             {about.highlights.map((h, i) => (
               <div
                 key={h.label}

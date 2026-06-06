@@ -149,6 +149,97 @@ body {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/*  SOOTHING MOTION                                                     */
+/*  Gentle, minimal enhancers: scroll-linked reveals (CSS scroll        */
+/*  timeline — no JS, degrades to fully-visible where unsupported) and  */
+/*  a soft staggered entrance for above-the-fold content.               */
+/* ------------------------------------------------------------------ */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* On-load entrance. `.rise` fades up once; stagger with --rise-delay. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    opacity: 0;
+    animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+}
+
+/* Scroll-linked reveal: scrubs in as the element enters the viewport.
+   Gated behind @supports so unsupported browsers show content normally. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  }
+}
+
+/* Gentle idle motion for icons — a barely-there float / pulse. */
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon-float {
+    animation: icon-float 3.6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .icon-pulse {
+    animation: icon-pulse 3.2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  /* a touch more life when the icon's card/button is hovered */
+  .group:hover .icon-float,
+  .group:hover .icon-pulse {
+    animation-duration: 1.6s;
+  }
+}
+
+/* Soft, soothing hover lift for primary actions / cards. */
+@media (prefers-reduced-motion: no-preference) {
+  .lift {
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.25s ease;
+  }
+  .lift:hover {
+    transform: translateY(-2px);
+  }
+  .lift:active {
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-slow,
