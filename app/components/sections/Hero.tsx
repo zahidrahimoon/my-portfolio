@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section id="top" className="bg-cream">
       <Container className="pt-20 pb-14 text-center sm:pt-28">
-        <div className="mx-auto flex max-w-4xl flex-col items-center">
+        <div className="mx-auto flex max-w-5xl flex-col items-center">
           <span className="inline-flex items-center gap-2 rounded-pill border border-line bg-cream-soft px-4 py-1.5 text-sm font-medium text-ink-soft">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
@@ -19,7 +19,7 @@ export function Hero() {
 
           <span className="eyebrow mt-6">{hero.eyebrow}</span>
 
-          <h1 className="display mt-5 max-w-4xl text-5xl font-bold text-ink sm:text-6xl md:text-[4.5rem]">
+          <h1 className="display mt-5 text-4xl font-bold text-ink sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
             {hero.title}
           </h1>
 

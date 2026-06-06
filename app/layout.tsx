@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { ContactModal } from "./components/ui/ContactModal";
 
 /* Display serif for headings, Inter for everything else. */
 const playfair = Playfair_Display({
@@ -31,7 +32,13 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla's
+          `cz-shortcut-listen`) inject attributes on <body> before React
+          hydrates, which would otherwise log a hydration mismatch. */}
+      <body className="min-h-full" suppressHydrationWarning>
+        {children}
+        <ContactModal />
+      </body>
     </html>
   );
 }

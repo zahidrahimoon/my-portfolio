@@ -9,7 +9,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-cream py-section">
+    <section id="faq" className="bg-surface py-section">
       <Container className="max-w-3xl">
         <h2 className="display text-center text-4xl font-bold text-ink sm:text-5xl">
           {faqs.title}

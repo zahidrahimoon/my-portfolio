@@ -57,7 +57,7 @@ function Star() {
 /** "What I Do" — four disciplines connected to a full-stack highlight. */
 export function WhyItWorks() {
   return (
-    <section className="bg-cream py-section">
+    <section className="bg-surface py-section">
       <Container>
         <SectionHeading
           eyebrow={whyItWorks.eyebrow}

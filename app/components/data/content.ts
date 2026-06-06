@@ -24,7 +24,7 @@ export const nav = {
 
 export const hero = {
   eyebrow: "Associate Software Engineer",
-  title: "I build scalable web & mobile products that actually perform.",
+  title: "I build products that perform.",
   body: "Full-Stack Engineer with 2+ years shipping production-ready systems across React, Next.js, Node.js and React Native. I optimize performance, write clean architecture, and turn ideas into reliable software.",
   primaryCta: { label: "Contact Me", href: "#contact" },
   secondaryCta: { label: "View my work", href: "#formats" },
@@ -174,10 +174,61 @@ export const steps = {
   ],
 };
 
+/* Reviews — auto-scrolling testimonial cards (was the photo gallery). */
 export const gallery = {
-  eyebrow: "Selected Work",
-  title: "A glimpse of what I build.",
-  body: "Dashboards, platforms, developer tools and mobile apps — shipped to production.",
+  eyebrow: "Testimonials",
+  title: "What people I work with say.",
+  body: "Feedback from clients, teammates and founders I've shipped products with.",
+  items: [
+    {
+      quote:
+        "Zahid turned a vague brief into a polished, production-ready platform faster than we expected. Clean code, clear communication, zero drama.",
+      name: "Ayesha Khan",
+      role: "Founder",
+      company: "Oneviti",
+      rating: 5,
+    },
+    {
+      quote:
+        "One of the few engineers who genuinely owns the whole stack. Our app got noticeably faster after his Next.js performance work.",
+      name: "Daniel Roberts",
+      role: "Product Lead",
+      company: "360XpertSolutions",
+      rating: 5,
+    },
+    {
+      quote:
+        "He shipped our React Native app across iOS and Android on a single codebase and hit every deadline. Highly recommend.",
+      name: "Sara Malik",
+      role: "CTO",
+      company: "Techverse51",
+      rating: 5,
+    },
+    {
+      quote:
+        "Reliable, detail-obsessed and easy to work with. The admin dashboard he built is still the backbone of our operations.",
+      name: "Imran Sheikh",
+      role: "Operations Manager",
+      company: "Rahimoon Institute",
+      rating: 5,
+    },
+    {
+      quote:
+        "Great architectural instincts. His boilerplate cut our project setup time dramatically and the code quality stayed high throughout.",
+      name: "Hina Raza",
+      role: "Engineering Manager",
+      company: "Freelance Client",
+      rating: 5,
+    },
+    {
+      quote:
+        "From API design to deployment, Zahid handled it all and kept us in the loop the whole way. Would hire again without hesitation.",
+      name: "Bilal Ahmed",
+      role: "Startup Founder",
+      company: "E-Commerce Client",
+      rating: 5,
+    },
+  ],
 };
 
 /* Projects (was What We Run formats). */
@@ -249,6 +300,8 @@ export const testimonials = {
       name: "",
       role: "Open Source · NPM",
       cta: "View on NPM",
+      icon: "package",
+      accent: "#c8431f",
     },
     {
       company: "IPv4 Optimization",
@@ -257,6 +310,8 @@ export const testimonials = {
       name: "",
       role: "Research",
       cta: "",
+      icon: "research",
+      accent: "#1b6fb0",
     },
     {
       company: "OOP with Java",
@@ -265,6 +320,8 @@ export const testimonials = {
       name: "",
       role: "Certification",
       cta: "",
+      icon: "certificate",
+      accent: "#a9822c",
     },
     {
       company: "Computer Networking",
@@ -273,6 +330,8 @@ export const testimonials = {
       name: "",
       role: "Certification",
       cta: "",
+      icon: "network",
+      accent: "#0f9d8f",
     },
     {
       company: "Frontend Simulations",
@@ -281,6 +340,8 @@ export const testimonials = {
       name: "",
       role: "Certification",
       cta: "",
+      icon: "code",
+      accent: "#6d3bd4",
     },
     {
       company: "Diploma in Web Dev",
@@ -289,40 +350,275 @@ export const testimonials = {
       name: "",
       role: "Education",
       cta: "",
+      icon: "cap",
+      accent: "#c0397f",
     },
   ],
 };
 
 /* Tech stack tiles (was The Network). */
+/* `slug` maps to a Simple Icons brand logo (cdn.simpleicons.org). */
 export const network = {
   eyebrow: "Tech Stack",
   title: "The tools I reach for every day.",
   body: "Full coverage from frontend to deployment — frameworks, databases, infra and the glue in between.",
   communities: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "NestJS",
-    "Express",
-    "React Native",
-    "Expo",
-    "Tailwind CSS",
-    "ShadCN/UI",
-    "Redux Toolkit",
-    "Zustand",
-    "Zod",
-    "MongoDB",
-    "PostgreSQL",
-    "MySQL",
-    "Redis",
-    "Prisma",
-    "Docker",
-    "Socket.IO",
-    "RabbitMQ",
-    "Git",
-    "Vercel",
-    "Cloudinary",
+    { name: "React", slug: "react" },
+    { name: "Next.js", slug: "nextdotjs" },
+    { name: "TypeScript", slug: "typescript" },
+    { name: "Node.js", slug: "nodedotjs" },
+    { name: "NestJS", slug: "nestjs" },
+    { name: "Express", slug: "express" },
+    { name: "React Native", slug: "react" },
+    { name: "Expo", slug: "expo" },
+    { name: "Tailwind CSS", slug: "tailwindcss" },
+    { name: "ShadCN/UI", slug: "shadcnui" },
+    { name: "Redux Toolkit", slug: "redux" },
+    { name: "Zustand", slug: "" },
+    { name: "Zod", slug: "zod" },
+    { name: "MongoDB", slug: "mongodb" },
+    { name: "PostgreSQL", slug: "postgresql" },
+    { name: "MySQL", slug: "mysql" },
+    { name: "Redis", slug: "redis" },
+    { name: "Prisma", slug: "prisma" },
+    { name: "Docker", slug: "docker" },
+    { name: "Socket.IO", slug: "socketdotio" },
+    { name: "RabbitMQ", slug: "rabbitmq" },
+    { name: "Git", slug: "git" },
+    { name: "Vercel", slug: "vercel" },
+    { name: "Cloudinary", slug: "cloudinary" },
+  ],
+};
+
+/* About — intro block above the contact CTA. */
+export const about = {
+  eyebrow: "About Me",
+  title: "Engineer first, problem-solver always.",
+  paragraphs: [
+    "I'm Zahid Rahimoon, a Full-Stack Engineer based in Karachi with 2+ years turning ideas into reliable, production-grade software. I work end to end — interfaces, APIs, databases, real-time systems and deployments.",
+    "I care about the details users actually feel: speed, reliability and interfaces that just work. Whether it's a dashboard, a developer tool or a cross-platform mobile app, I own the lifecycle from first commit to production.",
+  ],
+  highlights: [
+    { value: "2+", label: "years experience" },
+    { value: "25+", label: "projects shipped" },
+    { value: "10+", label: "happy clients" },
+  ],
+  cta: { label: "Contact Me" },
+};
+
+/* Contact — left column data/links + right column form (rendered in modal). */
+export const contact = {
+  eyebrow: "Get in touch",
+  title: "Let's build something.",
+  body: "Tell me about your project and I'll get back to you within a day.",
+  email: "mtkinverse@gmail.com",
+  location: "Karachi, Pakistan",
+  availability: "Available for freelance & full-time",
+  responseTime: "Replies within ~24 hours",
+  socials: [
+    { label: "GitHub", href: "https://github.com/", handle: "@zahidrahimoon" },
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com/",
+      handle: "in/zahidrahimoon",
+    },
+    { label: "Email", href: "mailto:mtkinverse@gmail.com", handle: "mtkinverse@gmail.com" },
+  ],
+};
+
+/* New auto-scrolling project showcase with dedicated detail pages.        */
+/* The original `formats` projects grid above is left untouched on purpose. */
+export const projectsShowcase = {
+  eyebrow: "Featured Work",
+  title: "Projects, up close.",
+  body: "Six builds I'm proud of — slide through and open any one for the full story.",
+  items: [
+    {
+      slug: "rahimoon-institute",
+      name: "Rahimoon Institute",
+      tagline: "College management platform",
+      year: "2025",
+      role: "Full-Stack Engineer",
+      seed: "proj-institute",
+      accent: "#8b1d1d",
+      summary:
+        "An end-to-end college platform with a student portal, content management system and admin dashboard.",
+      overview:
+        "Rahimoon Institute is a complete college management platform built to digitise admissions, course content and day-to-day administration. It pairs a student-facing portal with a powerful admin dashboard, all backed by role-based access control.",
+      highlights: [
+        "Role-based access for students, faculty and administrators",
+        "File uploads and media handled through Cloudinary",
+        "Transactional email for onboarding and notifications",
+        "CMS for courses, announcements and resources",
+      ],
+      tech: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "Cloudinary", "JWT"],
+      links: { live: "#", code: "#" },
+    },
+    {
+      slug: "next-boilerplate",
+      name: "Next Boilerplate",
+      tagline: "Production-ready starter kit",
+      year: "2025",
+      role: "Author",
+      seed: "proj-boilerplate",
+      accent: "#5a2db0",
+      summary:
+        "A batteries-included Next.js 16 starter used across 10+ projects, cutting setup time by 60%.",
+      overview:
+        "A production-ready Next.js starter kit that bundles auth, internationalisation, real-time, a component library and sensible defaults — so new projects start at sprint two, not zero.",
+      highlights: [
+        "Next.js 16 App Router with typed routes",
+        "Socket.IO real-time layer wired in",
+        "ShadCN/UI component system and theming",
+        "i18n, linting and CI configured out of the box",
+      ],
+      tech: ["Next.js", "Socket.IO", "ShadCN/UI", "TypeScript", "i18n"],
+      links: { live: "#", code: "#" },
+    },
+    {
+      slug: "360-mock-server",
+      name: "360 Mock Server",
+      tagline: "Zero-config mock REST API",
+      year: "2024",
+      role: "Author · NPM",
+      seed: "proj-mockserver",
+      accent: "#1b2a4a",
+      summary:
+        "A zero-config mock REST API server published on NPM with CRUD, faker data and pagination.",
+      overview:
+        "360 Mock Server is an NPM package that spins up a fully working REST API from a single config — perfect for unblocking frontend work before the real backend lands. It ships CRUD, relationships, pagination and realistic faker data.",
+      highlights: [
+        "Zero-config CRUD endpoints from a schema",
+        "Realistic seed data via Faker.js",
+        "Pagination, filtering and sorting built in",
+        "Published and versioned on NPM",
+      ],
+      tech: ["Node.js", "Express", "Faker.js", "NPM"],
+      links: { live: "#", code: "#" },
+    },
+    {
+      slug: "oneviti-dashboard",
+      name: "Oneviti Dashboard",
+      tagline: "Personal productivity hub",
+      year: "2025",
+      role: "Full-Stack Engineer",
+      seed: "proj-oneviti",
+      accent: "#10b3a3",
+      summary:
+        "A single hub for tasks, notes, finance tracking and scheduling — your day at a glance.",
+      overview:
+        "Oneviti brings tasks, notes, finance tracking and scheduling under one roof. A clean, fast dashboard that keeps everything in sync so you can plan, track and reflect without app-switching.",
+      highlights: [
+        "Unified tasks, notes and calendar",
+        "Personal finance tracking with charts",
+        "Fast, responsive React dashboard",
+        "MongoDB-backed sync across views",
+      ],
+      tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      links: { live: "#", code: "#" },
+    },
+    {
+      slug: "ecommerce-platforms",
+      name: "E-Commerce Platforms",
+      tagline: "10+ custom storefronts",
+      year: "2024",
+      role: "Full-Stack Engineer",
+      seed: "proj-ecommerce",
+      accent: "#ff7a45",
+      summary:
+        "More than ten custom storefronts with carts, payments and admin panels delivered for clients.",
+      overview:
+        "A series of custom e-commerce builds for clients across niches — each with a tailored storefront, cart, secure payments and a full admin panel for catalogue and order management.",
+      highlights: [
+        "Stripe-powered checkout and payments",
+        "Cart, wishlist and order management",
+        "Admin panels for catalogue and inventory",
+        "Built on MERN and Next.js",
+      ],
+      tech: ["Next.js", "MongoDB", "Express", "Stripe", "Tailwind CSS"],
+      links: { live: "#", code: "#" },
+    },
+    {
+      slug: "cross-platform-apps",
+      name: "Cross-Platform Mobile Apps",
+      tagline: "One codebase, iOS & Android",
+      year: "2025",
+      role: "Mobile Engineer",
+      seed: "proj-mobile",
+      accent: "#2f3b2a",
+      summary:
+        "React Native & Expo apps sharing a single codebase across iOS and Android with 95% code reuse.",
+      overview:
+        "A set of cross-platform mobile apps built with React Native and Expo, sharing up to 95% of code across iOS and Android — native feel, half the maintenance, fast delivery.",
+      highlights: [
+        "Up to 95% shared code across platforms",
+        "Expo build and over-the-air updates",
+        "Native navigation and gestures",
+        "Push notifications and offline support",
+      ],
+      tech: ["React Native", "Expo", "TypeScript", "Redux Toolkit"],
+      links: { live: "#", code: "#" },
+    },
+  ],
+};
+
+export type ShowcaseProject = (typeof projectsShowcase.items)[number];
+
+export function getProject(slug: string): ShowcaseProject | undefined {
+  return projectsShowcase.items.find((p) => p.slug === slug);
+}
+
+/* How I Work — my delivery process, from idea to production. */
+export const workProcess = {
+  eyebrow: "How I Work",
+  title: "From first idea to production.",
+  body: "A clear, collaborative process — you always know what's shipping and what's next.",
+  steps: [
+    {
+      no: "01",
+      icon: "compass",
+      title: "Discovery & Planning",
+      desc: "We align on goals, scope and constraints, then turn them into a concrete technical plan and timeline.",
+    },
+    {
+      no: "02",
+      icon: "ruler",
+      title: "Design & Architecture",
+      desc: "Wireframes, data models and a scalable architecture — decided before a line of production code.",
+    },
+    {
+      no: "03",
+      icon: "code",
+      title: "Build & Iterate",
+      desc: "Rapid, component-driven development with frequent demos and tight feedback loops so nothing drifts.",
+    },
+    {
+      no: "04",
+      icon: "rocket",
+      title: "Ship & Support",
+      desc: "Automated deployment, monitoring and ongoing maintenance so the product keeps performing in production.",
+    },
+  ],
+};
+
+/* Education — from the CV. */
+export const education = {
+  eyebrow: "Education",
+  title: "Where I studied.",
+  body: "Formal computer-science foundations backed by a focused web-development diploma.",
+  items: [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      school: "Dawood University of Engineering and Technology, Karachi",
+      period: "2023 – 2027",
+      note: "Core CS — algorithms, systems, networks and software architecture.",
+    },
+    {
+      degree: "Diploma in Web Development",
+      school: "Aptech Computer Education",
+      period: "2023 – 2024",
+      note: "Hands-on training across the modern JavaScript and full-stack ecosystem.",
+    },
   ],
 };
 
@@ -368,45 +664,12 @@ export const finalCta = {
 };
 
 export const footer = {
-  description:
-    "Full-Stack Engineer building scalable web and mobile products with React, Next.js, Node.js and React Native.",
+  name: "Zahid Rahimoon.",
+  email: "zahidrahimoon22@gmail.com",
   socials: [
-    { label: "GitHub", href: "#", icon: "github" },
-    { label: "LinkedIn", href: "#", icon: "linkedin" },
-    { label: "X", href: "#", icon: "x" },
+    { label: "GitHub", href: "https://github.com/", icon: "github" },
+    { label: "LinkedIn", href: "https://linkedin.com/", icon: "linkedin" },
+    { label: "X", href: "https://x.com/", icon: "x" },
   ],
-  columns: [
-    {
-      title: "Navigate",
-      links: [
-        { label: "Experience", href: "#how" },
-        { label: "Projects", href: "#formats" },
-        { label: "Tech Stack", href: "#network" },
-      ],
-    },
-    {
-      title: "Projects",
-      links: [
-        { label: "Rahimoon Institute", href: "#formats" },
-        { label: "Next Boilerplate", href: "#formats" },
-        { label: "360 Mock Server", href: "#formats" },
-      ],
-    },
-    {
-      title: "Connect",
-      links: [
-        { label: "GitHub", href: "#" },
-        { label: "LinkedIn", href: "#" },
-        { label: "Email", href: "#contact" },
-      ],
-    },
-    {
-      title: "More",
-      links: [
-        { label: "Résumé", href: "#" },
-        { label: "FAQ", href: "#faq" },
-      ],
-    },
-  ],
-  copyright: "© 2026 Zahid Rahimoon. Built with Next.js & Tailwind CSS.",
+  copyright: "© 2026 Zahid Rahimoon. All rights reserved.",
 };
