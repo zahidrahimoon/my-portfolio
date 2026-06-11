@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
@@ -13,12 +14,12 @@ function ProjectCard({ p }: { p: Project }) {
       className="group/card flex w-[300px] shrink-0 flex-col overflow-hidden rounded-card border border-line-soft bg-white transition-shadow hover:shadow-soft sm:w-[360px]"
     >
       <div className="relative h-44 overflow-hidden sm:h-48">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={`https://picsum.photos/seed/${p.seed}/720/420`}
           alt={p.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+          fill
+          sizes="(max-width: 640px) 300px, 360px"
+          className="object-cover transition-transform duration-500 group-hover/card:scale-105"
         />
         <span
           className="absolute left-4 top-4 rounded-full px-2.5 py-1 text-[0.7rem] font-semibold text-white"

@@ -1,4 +1,5 @@
 import { Container } from "../ui/Container";
+import Image from "next/image";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
 import { network } from "../data/content";
@@ -31,13 +32,16 @@ function Tile({ tech, i }: { tech: Tech; i: number }) {
       style={{ background: p.bg, color: p.fg }}
     >
       {logo ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={logo}
-          alt={`${tech.name} logo`}
-          loading="lazy"
-          className="h-8 w-8 object-contain sm:h-9 sm:w-9"
-        />
+        <div className="relative h-8 w-8 sm:h-9 sm:w-9">
+          <Image
+            src={logo}
+            alt={`${tech.name} logo`}
+            fill
+            unoptimized
+            className="object-contain"
+            sizes="(max-width: 640px) 32px, 36px"
+          />
+        </div>
       ) : (
         <span
           aria-hidden

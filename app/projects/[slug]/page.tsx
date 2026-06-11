@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { Container } from "../../components/ui/Container";
 import { projectsShowcase, getProject } from "../../components/data/content";
+
+/* Instant-navigation validation. This dynamic route reads `params.slug`, so
+   per the Next 16 docs it needs `prefetch: 'runtime'` with sample params.
+   Route segment config must be a static literal — keep slugs in sync with
+   `projectsShowcase.items`. */
+export const unstable_instant = {
+  prefetch: "runtime",
+  samples: [
+    { params: { slug: "rahimoon-institute" } },
+    { params: { slug: "next-boilerplate" } },
+    { params: { slug: "360-mock-server" } },
+    { params: { slug: "oneviti-dashboard" } },
+    { params: { slug: "ecommerce-platforms" } },
+    { params: { slug: "cross-platform-apps" } },
+  ],
+};
 
 export function generateStaticParams() {
   return projectsShowcase.items.map((p) => ({ slug: p.slug }));
@@ -105,12 +122,14 @@ export default async function ProjectDetailPage({
         {/* Cover */}
         <section className="bg-cream pb-section">
           <Container>
-            <div className="overflow-hidden rounded-card border border-line-soft">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="overflow-hidden rounded-card border border-line-soft relative aspect-[2/1] w-full">
+              <Image
                 src={`https://picsum.photos/seed/${project.seed}/1280/640`}
                 alt={project.name}
-                className="aspect-[2/1] w-full object-cover"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1280px) 100vw, 1280px"
               />
             </div>
           </Container>
