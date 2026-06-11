@@ -26,16 +26,19 @@ export function Button({
   variant = "primary",
   size = "md",
   className = "",
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   variant?: Variant;
   size?: keyof typeof sizes;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <a
       href={href}
+      onClick={onClick}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
     >
       {children}

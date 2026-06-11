@@ -10,15 +10,28 @@ export const site = {
 };
 
 export const nav = {
+  /* Short set — used in the footer "Explore" column. */
   primary: [
-    { label: "Experience", href: "#how", caret: false },
-    { label: "Projects", href: "#formats", caret: false },
-    { label: "Skills", href: "#network", caret: false },
-    { label: "FAQ", href: "#faq", caret: false },
+    { label: "About", href: "/#about", caret: false },
+    { label: "Experience", href: "/#how", caret: false },
+    { label: "Projects", href: "/#formats", caret: false },
+    { label: "Skills", href: "/#network", caret: false },
+    { label: "FAQ", href: "/#faq", caret: false },
+  ],
+  /* Full set — every section, used in the slide-in header menu. */
+  menu: [
+    { label: "Home", href: "/#top" },
+    { label: "About", href: "/#about" },
+    { label: "Experience", href: "/#how" },
+    { label: "Education", href: "/#education" },
+    { label: "Projects", href: "/#formats" },
+    { label: "Achievements", href: "/#gtm" },
+    { label: "Reviews", href: "/#reviews" },
+    { label: "Skills", href: "/#network" },
   ],
   actions: [
     { label: "Résumé", href: "#", variant: "outline" as const },
-    { label: "Contact Me", href: "#contact", variant: "primary" as const },
+    { label: "Contact Me", href: "/#contact", variant: "primary" as const },
   ],
 };
 
@@ -645,7 +658,7 @@ export const finalCta = {
 
 export const footer = {
   name: "Zahid Rahimoon.",
-  email: "zahidrahimoon22@gmail.com",
+  email: "mtkinverse@gmail.com",
   socials: [
     { label: "GitHub", href: "https://github.com/", icon: "github" },
     { label: "LinkedIn", href: "https://linkedin.com/", icon: "linkedin" },

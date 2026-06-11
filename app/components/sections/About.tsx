@@ -1,13 +1,13 @@
 import { Container } from "../ui/Container";
 import { about } from "../data/content";
 
-/** "About Me" — intro copy with stats and a button that opens the contact modal. */
+/** "About Me" — intro copy + stats on the left, portrait on the right. */
 export function About() {
   return (
     <section id="about" className="bg-cream py-section">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Left — copy + CTA */}
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          {/* Left — copy, stats + CTA */}
           <div className="reveal">
             <span className="eyebrow mb-5 block">{about.eyebrow}</span>
             <h2 className="display max-w-xl text-4xl font-bold text-ink sm:text-5xl">
@@ -36,21 +36,17 @@ export function About() {
             </a>
           </div>
 
-          {/* Right — stat cards */}
-          <div className="reveal grid gap-4 sm:grid-cols-2">
-            {about.highlights.map((h, i) => (
-              <div
-                key={h.label}
-                className={`flex flex-col justify-center rounded-card border border-line-soft bg-white p-7 ${
-                  i === 0 ? "sm:col-span-2" : ""
-                }`}
-              >
-                <span className="font-display text-4xl font-bold text-ink sm:text-5xl">
-                  {h.value}
-                </span>
-                <span className="mt-2 text-sm text-muted">{h.label}</span>
-              </div>
-            ))}
+          {/* Right — portrait */}
+          <div className="reveal relative mx-auto w-full max-w-md lg:mx-0 lg:ml-auto">
+            <div className="absolute -right-3 -top-3 h-24 w-24 rounded-card border border-gold/30" aria-hidden />
+            <div className="relative overflow-hidden rounded-card border border-line-soft bg-white shadow-soft">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://picsum.photos/seed/zahid-portrait/720/880"
+                alt="Zahid Rahimoon"
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </Container>

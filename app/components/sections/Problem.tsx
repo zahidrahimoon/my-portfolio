@@ -12,7 +12,7 @@ const toneStyles: Record<string, string> = {
 /** Three problem cards plus a supporting pull-quote. */
 export function Problem() {
   return (
-    <section className="bg-surface py-section">
+    <section id="why" className="bg-surface py-section">
       <Container>
         <SectionHeading
           eyebrow={problems.eyebrow}

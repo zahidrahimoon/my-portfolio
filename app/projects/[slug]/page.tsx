@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-cream-soft py-section">
+        <section className="bg-cream pt-section pb-12">
           <Container>
             <Link
               href="/#formats"
@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({
         </section>
 
         {/* Cover */}
-        <section className="bg-cream-soft pb-section">
+        <section className="bg-cream pb-section">
           <Container>
             <div className="overflow-hidden rounded-card border border-line-soft">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -117,7 +117,7 @@ export default async function ProjectDetailPage({
         </section>
 
         {/* Body */}
-        <section className="bg-cream py-section">
+        <section className="bg-surface py-section">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr]">
               <div>
@@ -157,7 +157,7 @@ export default async function ProjectDetailPage({
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-line-soft bg-white px-3 py-1.5 text-sm font-medium text-ink-soft"
+                      className="rounded-full border border-line-soft bg-cream-soft px-3 py-1.5 text-sm font-medium text-ink-soft"
                     >
                       {t}
                     </span>
@@ -180,7 +180,7 @@ export default async function ProjectDetailPage({
         </section>
 
         {/* More projects */}
-        <section className="bg-cream-deep py-section">
+        <section className="bg-cream py-section">
           <Container>
             <h2 className="display text-3xl font-bold text-ink">
               More projects
