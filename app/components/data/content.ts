@@ -6,7 +6,7 @@
 
 export const site = {
   name: "Zahid Rahimoon",
-  email: "mtkinverse@gmail.com",
+  email: "zahidrahimoon22@gmail.com",
 };
 
 export const nav = {
@@ -404,7 +404,7 @@ export const contact = {
   eyebrow: "Get in touch",
   title: "Let's build something.",
   body: "Tell me about your project and I'll get back to you within a day.",
-  email: "mtkinverse@gmail.com",
+  email: "zahidrahimoon22@gmail.com",
   location: "Karachi, Pakistan",
   availability: "Available for freelance & full-time",
   responseTime: "Replies within ~24 hours",
@@ -415,7 +415,7 @@ export const contact = {
       href: "https://linkedin.com/",
       handle: "in/zahidrahimoon",
     },
-    { label: "Email", href: "mailto:mtkinverse@gmail.com", handle: "mtkinverse@gmail.com" },
+    { label: "Email", href: "mailto:zahidrahimoon22@gmail.com", handle: "zahidrahimoon22@gmail.com" },
   ],
 };
 
@@ -657,8 +657,8 @@ export const finalCta = {
 };
 
 export const footer = {
-  name: "Zahid Rahimoon.",
-  email: "mtkinverse@gmail.com",
+  name: "M.Zahid",
+  email: "zahidrahimoon22@gmail.com",
   socials: [
     { label: "GitHub", href: "https://github.com/", icon: "github" },
     { label: "LinkedIn", href: "https://linkedin.com/", icon: "linkedin" },
