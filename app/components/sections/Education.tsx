@@ -1,22 +1,28 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Icon } from "../svg/Icon";
-import { education } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { EducationItem } from "@/lib/validation/schemas";
 
 /** "Education" — the two qualifications from the CV. */
-export function Education() {
+export async function Education() {
+  const [items, heading] = await Promise.all([
+    getCollection<EducationItem>("education"),
+    getSectionHeading("education"),
+  ]);
+
   return (
     <section id="education" className="bg-surface py-section">
       <Container>
         <SectionHeading
-          eyebrow={education.eyebrow}
-          title={education.title}
-          body={education.body}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          body={heading.body}
           align="left"
         />
 
         <div className="reveal mt-12 grid gap-5 sm:grid-cols-2">
-          {education.items.map((e) => (
+          {items.map(({ data: e }) => (
             <article
               key={e.degree}
               className="group flex flex-col rounded-card border border-line-soft bg-white p-7 shadow-soft"

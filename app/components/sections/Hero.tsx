@@ -2,10 +2,19 @@ import type { CSSProperties } from "react";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { LogoMarquee } from "./LogoMarquee";
-import { hero, clientLogos } from "../data/content";
+import { getSection } from "@/lib/data/singletons";
+import { getCollection } from "@/lib/data/collections";
+import type { HeroSingleton, ClientLogoItem } from "@/lib/validation/schemas";
 
 /** Above-the-fold hero with serif headline, CTAs, availability + stack. */
-export function Hero() {
+export async function Hero() {
+  const [hero, logoDocs] = await Promise.all([
+    getSection<HeroSingleton>("hero"),
+    getCollection<ClientLogoItem>("clientLogos"),
+  ]);
+  if (!hero) return null;
+  const clientLogos = logoDocs.map((d) => d.data.label);
+
   return (
     <section id="top" className="bg-cream">
       <Container className="pt-20 pb-14 text-center sm:pt-28">

@@ -1,17 +1,23 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Icon } from "../svg/Icon";
-import { workProcess } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { WorkProcessItem } from "@/lib/validation/schemas";
 
 /** "How I Work" — a four-step delivery process from idea to production. */
-export function Process() {
+export async function Process() {
+  const [items, heading] = await Promise.all([
+    getCollection<WorkProcessItem>("workProcess"),
+    getSectionHeading("workProcess"),
+  ]);
+
   return (
     <section id="process" className="bg-surface py-section">
       <Container>
         <SectionHeading
-          eyebrow={workProcess.eyebrow}
-          title={workProcess.title}
-          body={workProcess.body}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          body={heading.body}
           align="left"
         />
 
@@ -23,7 +29,7 @@ export function Process() {
           />
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {workProcess.steps.map((s) => (
+            {items.map(({ data: s }) => (
               <div key={s.no} className="group relative flex flex-col">
                 <div className="flex items-center justify-between">
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-espresso text-white">

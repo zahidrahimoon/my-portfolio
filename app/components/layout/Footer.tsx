@@ -1,13 +1,21 @@
 import { Container } from "../ui/Container";
-import { footer, contact, nav } from "../data/content";
-
-const socials = [
-  ...footer.socials.map((s) => ({ label: s.label, href: s.href })),
-  { label: "Email", href: `mailto:${footer.email}` },
-];
+import { getSection } from "@/lib/data/singletons";
+import type { SiteSingleton, ContactSingleton } from "@/lib/validation/schemas";
 
 /** Oversized wordmark footer with a contact CTA, link columns and a social row. */
-export function Footer() {
+export async function Footer() {
+  const [site, contact] = await Promise.all([
+    getSection<SiteSingleton>("site"),
+    getSection<ContactSingleton>("contact"),
+  ]);
+  if (!site || !contact) return null;
+  const { footer, nav } = site;
+
+  const socials = [
+    ...footer.socials.map((s) => ({ label: s.label, href: s.href })),
+    { label: "Email", href: `mailto:${footer.email}` },
+  ];
+
   return (
     <footer className="overflow-hidden bg-espresso text-white">
       <Container className="pt-16 pb-10 sm:pt-20">

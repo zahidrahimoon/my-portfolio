@@ -2,7 +2,8 @@ import { Container } from "../ui/Container";
 import Image from "next/image";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
-import { network } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { NetworkItem } from "@/lib/validation/schemas";
 
 type Tech = { name: string; slug: string };
 
@@ -77,19 +78,25 @@ function TileRow({
 }
 
 /** "Tech Stack" — heading over a full-bleed wall of logo tiles. */
-export function Network() {
-  const third = Math.ceil(network.communities.length / 3);
-  const r1 = network.communities.slice(0, third);
-  const r2 = network.communities.slice(third, third * 2);
-  const r3 = network.communities.slice(third * 2);
+export async function Network() {
+  const [items, heading] = await Promise.all([
+    getCollection<NetworkItem>("network"),
+    getSectionHeading("network"),
+  ]);
+  const communities = items.map((i) => i.data);
+
+  const third = Math.ceil(communities.length / 3);
+  const r1 = communities.slice(0, third);
+  const r2 = communities.slice(third, third * 2);
+  const r3 = communities.slice(third * 2);
 
   return (
     <section id="network" className="overflow-hidden bg-cream py-section">
       <Container>
         <SectionHeading
-          eyebrow={network.eyebrow}
-          title={network.title}
-          body={network.body}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          body={heading.body}
         />
       </Container>
 

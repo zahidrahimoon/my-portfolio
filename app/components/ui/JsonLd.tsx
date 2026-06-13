@@ -1,6 +1,19 @@
-import { site, contact, hero } from "../data/content";
+import { getSection } from "@/lib/data/singletons";
+import type {
+  SiteSingleton,
+  ContactSingleton,
+  HeroSingleton,
+} from "@/lib/validation/schemas";
 
-export function JsonLd() {
+export async function JsonLd() {
+  const [siteData, contact, hero] = await Promise.all([
+    getSection<SiteSingleton>("site"),
+    getSection<ContactSingleton>("contact"),
+    getSection<HeroSingleton>("hero"),
+  ]);
+  if (!siteData || !contact || !hero) return null;
+  const { site } = siteData;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",

@@ -1,10 +1,12 @@
-import { site } from "../data/content";
-
-/** Serif wordmark (Playfair) used in navbar and footer. */
+/** Serif wordmark (Playfair) used in navbar and footer. The site name is passed
+ *  in from the cached DAL by the server boundary (Navbar), since this renders
+ *  inside a client component and can't fetch directly. */
 export function Logo({
+  name,
   className = "",
   invert = false,
 }: {
+  name: string;
   className?: string;
   invert?: boolean;
 }) {
@@ -15,7 +17,7 @@ export function Logo({
         invert ? "text-white" : "text-ink"
       } ${className}`}
     >
-      {site.name}
+      {name}
     </a>
   );
 }

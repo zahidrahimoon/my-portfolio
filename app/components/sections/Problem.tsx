@@ -1,6 +1,10 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Icon } from "../svg/Icon";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { ProblemItem } from "@/lib/validation/schemas";
+// The supporting pull-quote is a fixed authored line, not editable content, so it
+// stays a static import (it has no collection/singleton in the content registry).
 import { problems } from "../data/content";
 
 const toneStyles: Record<string, string> = {
@@ -10,18 +14,23 @@ const toneStyles: Record<string, string> = {
 };
 
 /** Three problem cards plus a supporting pull-quote. */
-export function Problem() {
+export async function Problem() {
+  const [items, heading] = await Promise.all([
+    getCollection<ProblemItem>("problems"),
+    getSectionHeading("problems"),
+  ]);
+
   return (
     <section id="why" className="bg-surface py-section">
       <Container>
         <SectionHeading
-          eyebrow={problems.eyebrow}
-          title={problems.title}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
           align="left"
         />
 
         <div className="reveal mt-12 grid gap-5 md:grid-cols-3">
-          {problems.items.map((item) => (
+          {items.map(({ data: item }) => (
             <div
               key={item.title}
               className="group rounded-card border border-line-soft bg-cream-soft/40 p-7"

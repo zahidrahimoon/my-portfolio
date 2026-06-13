@@ -2,9 +2,10 @@ import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
 import { Icon } from "../svg/Icon";
-import { gallery } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { ReviewItem } from "@/lib/validation/schemas";
 
-type Review = (typeof gallery.items)[number];
+type Review = ReviewItem;
 
 function Stars({ count }: { count: number }) {
   return (
@@ -39,8 +40,12 @@ function ReviewCard({ r }: { r: Review }) {
 }
 
 /** "Testimonials" — two auto-scrolling rows of client review cards. */
-export function Gallery() {
-  const items = gallery.items;
+export async function Gallery() {
+  const [docs, heading] = await Promise.all([
+    getCollection<ReviewItem>("reviews"),
+    getSectionHeading("reviews"),
+  ]);
+  const items = docs.map((d) => d.data);
   const mid = Math.ceil(items.length / 2);
   const row1 = items.slice(0, mid);
   const row2 = items.slice(mid);
@@ -49,9 +54,9 @@ export function Gallery() {
     <section id="reviews" className="overflow-hidden bg-cream py-section">
       <Container>
         <SectionHeading
-          eyebrow={gallery.eyebrow}
-          title={gallery.title}
-          body={gallery.body}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          body={heading.body}
         />
       </Container>
 

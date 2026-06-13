@@ -1,10 +1,14 @@
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Icon } from "../svg/Icon";
-import { whyItWorks } from "../data/content";
+import { getSection } from "@/lib/data/singletons";
+import type { WhyItWorksSingleton } from "@/lib/validation/schemas";
 
 /** "What I Do" — four disciplines connected to a full-stack highlight. */
-export function WhyItWorks() {
+export async function WhyItWorks() {
+  const whyItWorks = await getSection<WhyItWorksSingleton>("whyItWorks");
+  if (!whyItWorks) return null;
+
   return (
     <section id="what" className="bg-surface py-section">
       <Container>

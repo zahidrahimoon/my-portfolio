@@ -1,9 +1,13 @@
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
-import { finalCta } from "../data/content";
+import { getSection } from "@/lib/data/singletons";
+import type { FinalCtaSingleton } from "@/lib/validation/schemas";
 
 /** Closing call-to-action band above the footer. */
-export function FinalCta() {
+export async function FinalCta() {
+  const finalCta = await getSection<FinalCtaSingleton>("finalCta");
+  if (!finalCta) return null;
+
   return (
     <section id="contact" className="bg-cream py-section">
       <Container className="reveal text-center">

@@ -3,11 +3,17 @@ import Image from "next/image";
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Marquee } from "../ui/Marquee";
-import { projectsShowcase } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { ProjectItem } from "@/lib/validation/schemas";
 
-type Project = (typeof projectsShowcase.items)[number];
+/** Prefer an uploaded Cloudinary image; otherwise a deterministic placeholder. */
+function projectImage(p: ProjectItem): string {
+  return p.imageUrl && p.imageUrl.length
+    ? p.imageUrl
+    : `https://picsum.photos/seed/${p.seed}/720/420`;
+}
 
-function ProjectCard({ p }: { p: Project }) {
+function ProjectCard({ p }: { p: ProjectItem }) {
   return (
     <Link
       href={`/projects/${p.slug}`}
@@ -15,7 +21,7 @@ function ProjectCard({ p }: { p: Project }) {
     >
       <div className="relative h-44 overflow-hidden sm:h-48">
         <Image
-          src={`https://picsum.photos/seed/${p.seed}/720/420`}
+          src={projectImage(p)}
           alt={p.name}
           fill
           sizes="(max-width: 640px) 300px, 360px"
@@ -70,16 +76,19 @@ function ProjectCard({ p }: { p: Project }) {
 }
 
 /** "Featured Work" — an auto-scrolling marquee of project cards that link to detail pages. */
-export function Projects() {
-  const items = projectsShowcase.items;
+export async function Projects() {
+  const [items, heading] = await Promise.all([
+    getCollection<ProjectItem>("projects"),
+    getSectionHeading("projects"),
+  ]);
 
   return (
     <section id="formats" className="overflow-hidden bg-cream py-section">
       <Container>
         <SectionHeading
-          eyebrow={projectsShowcase.eyebrow}
-          title={projectsShowcase.title}
-          body={projectsShowcase.body}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          body={heading.body}
         />
       </Container>
 
@@ -91,8 +100,8 @@ export function Projects() {
         speed="slow"
         pauseOnHover
       >
-        {items.map((p, i) => (
-          <ProjectCard key={`${p.slug}-${i}`} p={p} />
+        {items.map((it, i) => (
+          <ProjectCard key={`${it.data.slug}-${i}`} p={it.data} />
         ))}
       </Marquee>
     </section>

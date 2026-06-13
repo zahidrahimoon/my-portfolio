@@ -1,9 +1,10 @@
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
 import { Icon } from "../svg/Icon";
-import { testimonials } from "../data/content";
+import { getCollection, getSectionHeading } from "@/lib/data/collections";
+import type { AchievementItem } from "@/lib/validation/schemas";
 
-type Item = (typeof testimonials.items)[number];
+type Item = AchievementItem;
 
 function AchievementCard({ item, featured }: { item: Item; featured: boolean }) {
   return (
@@ -64,20 +65,25 @@ function AchievementCard({ item, featured }: { item: Item; featured: boolean }) 
 }
 
 /** "Achievements" — a grid of credential / award cards with a featured highlight. */
-export function Achievements() {
+export async function Achievements() {
+  const [items, heading] = await Promise.all([
+    getCollection<AchievementItem>("achievements"),
+    getSectionHeading("achievements"),
+  ]);
+
   return (
     <section id="gtm" className="bg-surface py-section">
       <Container>
         <div className="reveal max-w-2xl">
-          <span className="eyebrow mb-5 block">{testimonials.eyebrow}</span>
+          <span className="eyebrow mb-5 block">{heading.eyebrow}</span>
           <h2 className="display text-4xl font-bold text-ink sm:text-5xl">
-            {testimonials.title}
+            {heading.title}
           </h2>
-          <p className="mt-4 text-lg text-muted">{testimonials.body}</p>
+          <p className="mt-4 text-lg text-muted">{heading.body}</p>
         </div>
 
         <div className="reveal mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          {testimonials.items.map((item, i) => (
+          {items.map(({ data: item }, i) => (
             <AchievementCard
               key={item.company}
               item={item}

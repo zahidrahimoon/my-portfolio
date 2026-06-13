@@ -5,12 +5,21 @@ import { notFound } from "next/navigation";
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { Container } from "../../components/ui/Container";
-import { projectsShowcase, getProject } from "../../components/data/content";
+import {
+  getCollection,
+  getCollectionItemBySlug,
+  getCollectionSlugs,
+} from "@/lib/data/collections";
+import type { ProjectItem } from "@/lib/validation/schemas";
 
-/* Instant-navigation validation. This dynamic route reads `params.slug`, so
-   per the Next 16 docs it needs `prefetch: 'runtime'` with sample params.
-   Route segment config must be a static literal — keep slugs in sync with
-   `projectsShowcase.items`. */
+/* Slugs now come from the database. Under cacheComponents, params not returned by
+   generateStaticParams render on demand by default — so projects added later in the
+   admin work without a rebuild, and no `dynamicParams` export is needed. */
+
+/* Instant-navigation validation. This dynamic route reads `params.slug`, so per
+   the Next 16 docs it needs `prefetch: 'runtime'` with sample params. Route
+   segment config must be a static literal — these are prefetch hints only, not
+   the source of truth (that's the DB / seed). */
 export const unstable_instant = {
   prefetch: "runtime",
   samples: [
@@ -23,8 +32,14 @@ export const unstable_instant = {
   ],
 };
 
-export function generateStaticParams() {
-  return projectsShowcase.items.map((p) => ({ slug: p.slug }));
+function projectImage(p: ProjectItem, w: number, h: number): string {
+  return p.imageUrl && p.imageUrl.length
+    ? p.imageUrl
+    : `https://picsum.photos/seed/${p.seed}/${w}/${h}`;
+}
+
+export async function generateStaticParams() {
+  return (await getCollectionSlugs("projects")).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -33,11 +48,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) return { title: "Project not found" };
+  const item = await getCollectionItemBySlug<ProjectItem>("projects", slug);
+  if (!item) return { title: "Project not found" };
   return {
-    title: `${project.name} — Zahid Rahimoon`,
-    description: project.summary,
+    title: `${item.data.name} — Zahid Rahimoon`,
+    description: item.data.summary,
   };
 }
 
@@ -47,8 +62,13 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) notFound();
+  const item = await getCollectionItemBySlug<ProjectItem>("projects", slug);
+  if (!item) notFound();
+  const project = item.data;
+  const more = (await getCollection<ProjectItem>("projects"))
+    .map((i) => i.data)
+    .filter((p) => p.slug !== project.slug)
+    .slice(0, 3);
 
   return (
     <>
@@ -124,7 +144,7 @@ export default async function ProjectDetailPage({
           <Container>
             <div className="overflow-hidden rounded-card border border-line-soft relative aspect-[2/1] w-full">
               <Image
-                src={`https://picsum.photos/seed/${project.seed}/1280/640`}
+                src={projectImage(project, 1280, 640)}
                 alt={project.name}
                 fill
                 priority
@@ -205,10 +225,7 @@ export default async function ProjectDetailPage({
               More projects
             </h2>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {projectsShowcase.items
-                .filter((p) => p.slug !== project.slug)
-                .slice(0, 3)
-                .map((p) => (
+              {more.map((p) => (
                   <Link
                     key={p.slug}
                     href={`/projects/${p.slug}`}

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
-import { projectsShowcase } from "./components/data/content";
+import { getCollectionSlugs } from "@/lib/data/collections";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://zahidrahimoon.dev"; // Update this with your actual domain when launching
 
   const staticUrls = [
@@ -13,8 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectUrls = projectsShowcase.items.map((project) => ({
-    url: `${baseUrl}/projects/${project.slug}`,
+  const slugs = await getCollectionSlugs("projects");
+  const projectUrls = slugs.map((slug) => ({
+    url: `${baseUrl}/projects/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
